@@ -82,25 +82,28 @@ img {
     Default markup for typographic elements
 */
 
+h1,
+h2,
+h3 {
+    font-weight: 200;
+}
+
 h1 {
     font-size: 36px;
     line-height: 48px;
     margin: 0 0 24px;
-    font-weight: 200;
 }
 
 h2 {
     font-size: 32px;
     line-height: 40px;
     margin: 0 0 24px;
-    font-weight: 200;
 }
 
 h3 {
     font-size: 26px;
     line-height: 32px;
     margin: 0 0 24px;
-    font-weight: 200;
 }
 
 h4,
@@ -159,18 +162,15 @@ hr {
     margin: 0 0 24px;
 }
 
-a {
-    color: #5051DB;
+a,
+a:visited{
+    color: #3E3EA8;
     transition: all .1s ease-in-out;
 }
 
-a:visited,
-a:active {
-    color: #3E3EA8;
-}
-
 a:hover,
-a:focus {
+a:focus,
+a:active{
     color: #3E3EA8;
 }
 
@@ -206,6 +206,21 @@ a:focus {
         font-size:20px;
         line-height: 1.6;
     }
+    .o-row {
+        padding-left: 48px;
+        padding-right: 48px;
+    }
+
+    .o-row--md {
+        padding-top: 48px;
+        padding-bottom: 24px;
+    }
+
+    .o-row--lg {
+        padding-top: 72px;
+        padding-bottom: 48px;
+    }
+    
 }
 
 /*
@@ -234,23 +249,23 @@ a:focus {
     display: -ms-flexbox;
     display: flex;
     flex-wrap: wrap;
-    flex-direction: row;
-    justify-content:space-around;
+    /* flex-direction: row;
+    justify-content:space-around; */
 }
 
     .o-layout__item {
         flex-basis: 100%;
-        flex-basis: auto;
+        /* flex-basis: auto; */
     }
     
     
-    .center{
+    /* .center{
         display: block;
         margin-left: auto;
         margin-right: auto;
         width: auto;
 
-    }
+    } */
 
 /* gutter modifiers, these affect o-layout__item too */
 
@@ -350,9 +365,61 @@ a:focus {
     align-content: space-between;
 }
 
+* + h2 {
+    margin-top: 48px;
+}
+
+.o-section {
+    display: flow-root
+}
+
+.o-section+.o-section {
+    margin-top: 24px;
+}
+
+@media (min-width: 768px) {
+
+    .o-section--lg+.o-section--lg,
+    .o-section--xl+.o-section--xl {
+        margin-top: 48px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .o-section--xl+.o-section--xl {
+        margin-top: 72px;
+    }
+}
+
+.o-list-reset {
+    list-style: none;
+    padding: 0;
+}
+
+
 /*------------------------------------*\
   #COMPONENTS
 \*------------------------------------*/
+
+/*------------------------------------
+    header
+-------------------------------------*/
+
+.c-header__nav {
+    display: none;
+}
+
+@media (min-width: 992px) {
+    .c-header {
+        display: flex;
+        gap: 24px;
+        justify-content: space-between;
+    }
+
+    .c-header__nav {
+        display: block;
+    }
+}
 
 /*------------------------------------
     LOGO
@@ -361,8 +428,14 @@ a:focus {
     height: 32px;
 }
 
-.c-logo__symbol {
+.c-logo__svg {
     height: 100%;
+}
+
+@media (min-width: 768px) {
+    .c-logo {
+        height: 40px;
+    }
 }
 
 /*------------------------------------
@@ -371,6 +444,10 @@ a:focus {
 .c-nav {
     font-size: 18px;
     line-height: 24px;
+}
+
+.c-nav--meta {
+    font-size: 16px;
 }
 
 .c-nav__link {
@@ -385,55 +462,27 @@ a:focus {
     color:#202024
 }
 
-.c-nav__link:hover,
-.c-nav__link:focus {
-    color: #5051DB
-}
-
-.c-nav__list {
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.c-nav__link {
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.c-nav--meta {
-    font-size: 16px;
-}
-
 .c-nav__link--meta,
 .c-nav__link--meta:visited,
 .c-nav__link--meta:active {
-    color: #6C6C75
+    color: #6C6C75;
 }
 
+.c-nav__link.is-selected,
 .c-nav__link:hover,
 .c-nav__link:focus {
-    color: #5051DB
+    color: #5051db;
 }
 
-.is-selected .c-nav__link,
-.c-nav__link:hover,
-.c-nav__link:focus{
-    color: #5051DB
+ 
+@media (min-width: 768px) {
+    .c-nav__list {
+        display: flex;
+        gap: 32px;
+    }
 }
 
-/*------------------------------------
-    header
--------------------------------------*/
 
-.c-header__nav {
-    display: none;
-}
 
 /*------------------------------------*\
   #UTILITIES
@@ -676,65 +725,10 @@ a:focus {
     }
 }
     
-    .o-section +.o-section {
-    margin-top: 24px;
-    }
-    
-    @media (min-width: 768px) {
-    .o-section--lg +.o-section--lg,
-    .o-section--xl+.o-section--xl{
-        margin-top: 48px;
-        }
-    }
-    @media (min-width: 1200px){
-    .o-section--xl+.o-section--xl{
-        margin-top: 72px;
-    }
-    
-    .o-section{
-        display: flow-root
-    }
 
 /*------------------------------------*\
   #MEDIA
 \*------------------------------------*/
-
-@media (min-width:768px) {
-    .o-row {
-        padding-left: 48px;
-        padding-right: 48px;
-    }
-
-    .o-row--md{
-        padding-top:48px;
-        padding-bottom:24px;
-    }
-    
-    .o-row--lg {
-        padding-top: 72px;
-        padding-bottom: 48px;
-    }
-    
-}
-
-@media (min-width:768px) {
-    .c-logo__symbol {
-        height: 40px;
-    }
-}
-
-@media (min-width: 992px) {
-    .c-header {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-
-    }
-
-    .c-header__nav {
-        display:block;
-    }
-}
 
 /*
     Media Queries
