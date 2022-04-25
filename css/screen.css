@@ -70,7 +70,6 @@ html {
     ---
     Default markup for images to make them responsive
 */
-
 img {
     max-width: 100%;
     vertical-align: top;
@@ -178,10 +177,10 @@ a:active{
   #OBJECTS
 \*------------------------------------*/
 
-.o-list {
+/* .o-list {
     list-style: none;
     padding:0
-}
+} */
 
 /*
     Objects: Row
@@ -204,7 +203,6 @@ a:active{
 @media (min-width: 768px) {
     html{
         font-size:20px;
-        line-height: 1.6;
     }
     .o-row {
         padding-left: 48px;
@@ -233,7 +231,7 @@ a:active{
     margin-left: auto;
     margin-right: auto;
     width: 100%;
-    max-width: 70.5em; /* 90 * 16px = 1440px */
+    max-width: 56.4em; /* 90 * 16px = 1440px */
 }
 
 /*
@@ -451,8 +449,8 @@ a:active{
 }
 
 .c-nav__link {
+    display: block;
     text-decoration: none;
-    font-weight: 400;
     padding: 8px 0;
 }
 
